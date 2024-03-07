@@ -12,9 +12,9 @@ function Trending() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     axios
-      .get("https://api.themoviedb.org/3/discover/movie", {
+      .get(`${process.env.REACT_APP_BASE_URL}/discover/movie`, {
         params: {
-          api_key: "9174a987f85ef35a05810700f2a2e9e8",
+          api_key: process.env.REACT_APP_TMDB_KEY,
         },
       })
       .then((response) => {
@@ -35,7 +35,7 @@ function Trending() {
         {movies.map((result, index) => {
           return (
             <>
-              {/* Card 1 */}
+              {/* Card */}
               <div className="card lg:w-96 w-80 mx-auto glass" key={index}>
                 <figure>
                   <img
